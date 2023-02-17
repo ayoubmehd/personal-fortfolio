@@ -57,13 +57,16 @@
       <img
         class="h-[25vh] mb-10 object-cover object-center rounded"
         alt="hero"
-        src="https://dummyimage.com/720x600"
+        :src="profile"
       />
       <div class="text-center lg:w-2/3 w-full">
         <h1
           class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
         >
           {{ $t("hero.heading") }}
+        </h1>
+        <h1 class="title-font sm:text-2xl text-xl mb-4 text-gray-900">
+          Ayoub ELMAHDAOUI
         </h1>
         <div class="flex justify-center">
           <button
@@ -83,23 +86,85 @@
 
   <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto">
-      <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          class="inline-block w-8 h-8 text-gray-400 mb-8"
-          viewBox="0 0 975.036 975.036"
+      <h1
+        class="sm:text-3xl text-2xl font-medium title-font text-center text-gray-900 mb-20"
+        v-html="$t('work.heading')"
+      ></h1>
+      <div
+        class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6"
+      >
+        <div
+          v-for="item in work"
+          :key="item.id"
+          class="flex flex-col md:flex-row items-center border rounded-lg overflow-hidden"
         >
-          <path
-            d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"
-          ></path>
-        </svg>
-        <p class="leading-relaxed text-lg">
-          {{ $t("about.text") }}
-        </p>
-        <span
-          class="inline-block h-1 w-10 rounded bg-indigo-500 mt-8 mb-6"
-        ></span>
+          <a
+            href="#"
+            class="group w-full md:w-32 lg:w-48 h-48 md:h-full block self-start shrink-0 bg-gray-100 overflow-hidden relative"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600"
+              loading="lazy"
+              alt="Photo by Minh Pham"
+              class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200"
+            />
+          </a>
+
+          <div class="flex flex-col gap-2 p-4 lg:p-6">
+            <h2 class="text-gray-800 text-xl font-bold">
+              <a
+                href="#"
+                class="hover:text-indigo-500 active:text-indigo-600 transition duration-100"
+                >{{ item.name }}</a
+              >
+            </h2>
+
+            <p class="text-gray-500">
+              {{ item.short_details }}
+            </p>
+
+            <div>
+              <a
+                :aria-disabled="true"
+                :href="item.type == 'a' ? '#' : ''"
+                :class="{
+                  'opacity-80': item.type == 'b',
+                }"
+                @click="
+                  (e) => {
+                    if (item.type == 'b') {
+                      e.preventDefault();
+                    }
+                  }
+                "
+                class="text-indigo-500 hover:text-indigo-600 active:text-indigo-700 font-semibold transition duration-100"
+              >
+                Read more
+              </a>
+
+              <div class="-mx-0.5 pt-1">
+                <span
+                  class="text-center bg-indigo-600 text-white px-2 py-1 mx-1 rounded"
+                  v-for="tag in item.tags"
+                >
+                  {{ tag }}
+                </span>
+                <span
+                  v-if="item.type === 'b'"
+                  class="text-center bg-red-400 text-white px-2 py-1 mx-1 rounded"
+                >
+                  Closed Source
+                </span>
+                <span
+                  v-else
+                  class="text-center bg-indigo-600 text-white px-2 py-1 mx-1 rounded"
+                >
+                  Open Source
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -113,7 +178,7 @@
       <div
         class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6"
       >
-        <div class="p-4 md:w-1/3 flex">
+        <div v-for="item in services" class="p-4 md:w-1/3 flex">
           <div
             class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 flex-shrink-0"
           >
@@ -131,106 +196,10 @@
           </div>
           <div class="flex-grow pl-6">
             <h2 class="text-gray-900 text-lg title-font font-medium mb-2">
-              Shooting Stars
+              {{ item.name }}
             </h2>
             <p class="leading-relaxed text-base">
-              Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-              taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh
-              mi pug VHS try-hard ugh iceland kickstarter tumblr live-edge
-              tilde.
-            </p>
-            <a
-              class="mt-3 text-indigo-500 inline-flex items-center"
-              data-ur1313m3t="true"
-              >{{ $t("learn_more") }}
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-4 h-4 ml-2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-        <div class="p-4 md:w-1/3 flex">
-          <div
-            class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 flex-shrink-0"
-          >
-            <svg
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-            >
-              <circle cx="6" cy="6" r="3"></circle>
-              <circle cx="6" cy="18" r="3"></circle>
-              <path
-                d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"
-              ></path>
-            </svg>
-          </div>
-          <div class="flex-grow pl-6">
-            <h2 class="text-gray-900 text-lg title-font font-medium mb-2">
-              The Catalyzer
-            </h2>
-            <p class="leading-relaxed text-base">
-              Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-              taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh
-              mi pug VHS try-hard ugh iceland kickstarter tumblr live-edge
-              tilde.
-            </p>
-            <a
-              class="mt-3 text-indigo-500 inline-flex items-center"
-              data-ur1313m3t="true"
-              >{{ $t("learn_more") }}
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-4 h-4 ml-2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-        <div class="p-4 md:w-1/3 flex">
-          <div
-            class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 flex-shrink-0"
-          >
-            <svg
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-            >
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-          </div>
-          <div class="flex-grow pl-6">
-            <h2 class="text-gray-900 text-lg title-font font-medium mb-2">
-              Neptune
-            </h2>
-            <p class="leading-relaxed text-base">
-              Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-              taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh
-              mi pug VHS try-hard ugh iceland kickstarter tumblr live-edge
-              tilde.
+              {{ item.headline }}
             </p>
             <a
               class="mt-3 text-indigo-500 inline-flex items-center"
@@ -430,6 +399,11 @@
 </template>
 
 <script lang="ts" setup>
+// @ts-ignore
+import profile from "../assets/img/profile.jpeg";
+import work from "../assets/data/work";
+import services from "../assets/data/services";
+
 interface GitHubPinnedRepo {
   owner: string;
   repo: string;

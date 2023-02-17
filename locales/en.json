@@ -1,10 +1,9 @@
 {
   "home": "Home",
-  "work": "Work",
   "cta_button": "Hire Me",
   "learn_more": "Learn More",
   "hero": {
-    "heading": "Microdosing synth tattooed vexillologist"
+    "heading": "Accelerate Your Startup's Growth"
   },
   "about": {
     "title": "About",
@@ -24,5 +23,8 @@
       "message": "Message",
       "submit": "Send"
     }
+  },
+  "work": {
+    "heading": "Work"
   }
 }
