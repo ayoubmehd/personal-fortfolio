@@ -144,20 +144,20 @@
 
               <div class="-mx-0.5 pt-1">
                 <span
-                  class="text-center bg-indigo-600 text-white px-2 py-1 mx-1 rounded"
+                  class="text-center inline-block bg-indigo-600 text-white px-2 py-1 mx-1 rounded"
                   v-for="tag in item.tags"
                 >
                   {{ tag }}
                 </span>
                 <span
                   v-if="item.type === 'b'"
-                  class="text-center bg-red-400 text-white px-2 py-1 mx-1 rounded"
+                  class="text-center inline-block bg-red-400 text-white px-2 py-1 mx-1 rounded"
                 >
                   Closed Source
                 </span>
                 <span
                   v-else
-                  class="text-center bg-indigo-600 text-white px-2 py-1 mx-1 rounded"
+                  class="text-center inline-block bg-indigo-600 text-white px-2 py-1 mx-1 rounded"
                 >
                   Open Source
                 </span>
