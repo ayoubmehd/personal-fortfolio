@@ -1,9 +1,10 @@
 {
   "home": "Home",
-  "cta_button": "Hire Me",
+  "cta_button": "Contact Me",
   "learn_more": "Learn More",
   "hero": {
-    "heading": "Accelerate Your Startup's Growth"
+    "heading": "Full Stack Developer",
+    "subheading": "Building front-end and back-end for web applications"
   },
   "about": {
     "title": "About",
