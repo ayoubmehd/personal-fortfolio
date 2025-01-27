@@ -6,6 +6,7 @@ draft: false
 tags:
 - Typescript
 - Javascript
+repoUrl: https://github.com/ayoubmehd/frontend-library
 ---
 # A simple Frontend Library
 

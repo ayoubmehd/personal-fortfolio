@@ -4,11 +4,11 @@ summary: "A blog with the ability to add videos and cut few seconds before and a
 date: "Mar 18 2022"
 draft: false
 tags:
-- Astro
-- Javascript
+- Vue
+- Firebase
 - Typescript
+- HTML
 - Tailwind
-- SolidJs
 # demoUrl: https://astro-sphere-demo.vercel.app
-repoUrl: https://github.com/markhorn-dev/astro-sphere
+repoUrl: https://github.com/ayoubmehd/blog-with-videos
 ---
