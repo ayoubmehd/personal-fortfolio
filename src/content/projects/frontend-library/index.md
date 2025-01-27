@@ -4,10 +4,8 @@ summary: "A basic frontend library insipred by vue reactivity system"
 date: "Jul 18 2024"
 draft: false
 tags:
-- Svelte
-- Sveltekit
 - Typescript
-- Tailwind
+- Javascript
 ---
 # A simple Frontend Library
 
