@@ -19,8 +19,8 @@ const projects = (await getCollection("projects"))
 
 const stack = [
   { 
-    text: "Astro", 
-    icon: "astro", 
+    text: "React", 
+    icon: "react", 
     href: "https://astro.build" 
   },
   { 
@@ -36,6 +36,11 @@ const stack = [
   { 
     text: "Tailwind", 
     icon: "tailwind", 
+    href: "https://tailwindcss.com" 
+  },
+  { 
+    text: "Node.js", 
+    icon: "node", 
     href: "https://tailwindcss.com" 
   },
 ]
@@ -80,14 +85,32 @@ const stack = [
       <div class='relative w-full h-full flex items-center justify-center'>
         <div class='p-5 text-center'>
           <p class="animated text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-black dark:text-white">
-            Full stack developer with 3+ years of experincese,
+            Full stack developer
+          </p>
+          <p class="animated text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-black dark:text-white">
+            With 3+ years of experincese,
           </p>
           <p class='animated text-2xl md:text-3xl lg:text-2xl font-bold uppercase text-black dark:text-white'>
-            based in Morocco
+            based in Morocco 🇲🇦
           </p>
           <p class='animated text-sm md:text-base lg:text-lg opacity-75'>
             Ayoub Elmahdaoui
           </p>
+
+      <!-- Tech Stack Section -->
+      <section class="flex items-center justify-center">
+        <div class="space-y-4">
+          <div class="flex flex-wrap items-center gap-2 mt-5">
+            {stack.map(item => (
+              <StackCard 
+                text={item.text}
+                icon={item.icon}
+                href={item.href}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
           <div id="ctaButtons" class='animated flex flex-wrap gap-4 justify-center mt-5'>
             <a href='/work' class='py-2 px-4 rounded truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend'>
               View my work
@@ -105,14 +128,14 @@ const stack = [
     <div class="mx-auto max-w-screen-sm p-5 space-y-24 pb-16">
 
       <!-- About Section -->
-      <section class="animate">
+      <!-- <section class="animate">
         <article>
           <p>Ayoub Elmahdaoui, from Morocco 🇲🇦, I am a  <b><i>software engineer</i></b>, <b><i>minimalist</i></b> and <b><i>gamer</i></b>.</p>
           <p>I enjoy Vue.js, React.js, Node.js and PHP Laravel</p>
           <p>My time at checkin.com</p>
           <p>I managed reduce the Javascript bundle for an old Vue.js SPA, I used tree-shaking to reduce Javascript, and splited vue components styles so that the only css included is for the imported components</p>
         </article>
-      </section>
+      </section> -->
 
       <!-- Blog Preview Section -->
       <section class="animate">
@@ -137,31 +160,6 @@ const stack = [
         </div>
       </section>
 
-      <!-- Tech Stack Section -->
-      <!-- <section class="animate">
-        <div class="space-y-4">
-          <p class="font-semibold text-black dark:text-white">
-            Website build with
-          </p>
-          <div class="flex flex-wrap items-center gap-2 mt-5">
-            {stack.map(item => (
-              <StackCard 
-                text={item.text}
-                icon={item.icon}
-                href={item.href}
-              />
-            ))}
-          </div>
-          <div>
-            Performing reactivity and statefulness, special guest
-            <a href="https://www.solidjs.com/" target="_blank" class="w-fit group underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
-              <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
-                SolidJS
-              </span>
-            </a>
-          </div>
-        </div>
-      </section> -->
 
       <!-- Project Preview Section -->
       <section class="animate">
