@@ -2,10 +2,36 @@
 import { getCollection } from "astro:content"
 import PageLayout from "@layouts/PageLayout.astro"
 import ArrowCard from "@components/ArrowCard"
+import SkillsChart from "@components/SkillsChart"
 import StackCard from "@components/StackCard.astro"
 import { SITE, SOCIALS } from "@consts"
 import TwinklingStars from "@components/TwinklingStars.astro"
 import MeteorShower from "@components/MeteorShower.astro"
+import moment from "moment"
+
+function calcWorkDateDiff(work: { company: string; role: string; dateStart: Date; dateEnd: string | Date; technologiesUsed?: string[] | undefined }) {
+  if (work.dateEnd === 'Now') {
+    return moment(new Date()).diff(work.dateStart, 'years', true);
+  }
+  return moment(work.dateEnd).diff(work.dateStart, 'years', true);
+}
+
+const techMap = new Map();
+
+const workData = await getCollection("work").then(work => work.map(item => item.data)) || [];
+
+for (const work of workData) {
+  const years = calcWorkDateDiff(work);
+  for (const tech of work.technologiesUsed || []) {
+    if (techMap.has(tech)) {
+      techMap.get(tech).years += years;
+      continue;
+    }
+    techMap.set(tech, { name: tech, years });
+  }
+}
+
+const data = Array.from(techMap.entries()).map(([_, value]) => value).sort((a, b) => b.years - a.years);
 
 const posts = (await getCollection("blog"))
   .filter(post => !post.data.draft)
@@ -105,7 +131,7 @@ const stack = [
               <StackCard 
                 text={item.text}
                 icon={item.icon}
-                href={item.href}
+                href="#"
               />
             ))}
           </div>
@@ -123,19 +149,15 @@ const stack = [
       </div>
     </div>
   </section>
+  <section class="animate mx-auto hidden lg:block">
+    <SkillsChart client:load data={data} /> 
+  </section>
 
   <div class="relative bg-white dark:bg-black">
     <div class="mx-auto max-w-screen-sm p-5 space-y-24 pb-16">
 
       <!-- About Section -->
-      <!-- <section class="animate">
-        <article>
-          <p>Ayoub Elmahdaoui, from Morocco 🇲🇦, I am a  <b><i>software engineer</i></b>, <b><i>minimalist</i></b> and <b><i>gamer</i></b>.</p>
-          <p>I enjoy Vue.js, React.js, Node.js and PHP Laravel</p>
-          <p>My time at checkin.com</p>
-          <p>I managed reduce the Javascript bundle for an old Vue.js SPA, I used tree-shaking to reduce Javascript, and splited vue components styles so that the only css included is for the imported components</p>
-        </article>
-      </section> -->
+      
 
       <!-- Blog Preview Section -->
       <section class="animate">
