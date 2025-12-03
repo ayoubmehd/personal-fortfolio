@@ -182,7 +182,7 @@ Not harder to write code.
 ### 8. It's a relay good way to give feedback to your AI Agent
 
 AI agents are great at producing boilerplate, but they’re not great at maintaining internal consistency.  
-TypeScript fixes that.
+TypeScript fixes some of that.
 With TypeScript, you just follow the errors until everything aligns, or even prompt the agent with the ts error.
 
 ---
