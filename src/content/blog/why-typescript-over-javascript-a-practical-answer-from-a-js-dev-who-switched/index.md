@@ -120,9 +120,9 @@ That’s why I rely heavily on libraries like:
 
 - **Zod** — runtime validation → types inferred automatically
     
-- **Drizzle ORM** — DB schema → types generated
+- **Drizzle ORM** — DB schema → ORM
     
-- **Prisma** — migrations → typed models
+- **Prisma** — DB schema → ORM
     
 
 For me, the magic is in **letting the libraries generate the complex types**, and using simple, structural types for everything else.
