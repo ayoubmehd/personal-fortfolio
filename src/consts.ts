@@ -53,6 +53,7 @@ export const LINKS: Links = [
 
 export const UPWORK = {
   TEXT: "Upwork profile",
+  ICON: "upwork",
   HREF: "https://www.upwork.com/freelancers/~011271186390d57a05?mp_source=share",
 }
 

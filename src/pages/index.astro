@@ -138,7 +138,10 @@ const stack = [
         </div>
       </section>
           <div id="ctaButtons" class='animated flex flex-wrap gap-4 justify-center mt-5'>
-            <a href={UPWORK.HREF} target="_blank" rel="noopener noreferrer" data-umami-event='cta-upwork-profile' class='py-2 px-4 rounded truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend'>
+            <a href={UPWORK.HREF} target="_blank" rel="noopener noreferrer" data-umami-event='cta-upwork-profile' class='py-2 px-4 rounded truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend flex items-center gap-2'>
+              <svg class="size-4 fill-current shrink-0" aria-hidden="true">
+                <use href={`/social.svg#${UPWORK.ICON}`} />
+              </svg>
               {UPWORK.TEXT}
             </a>
             <a href='/work' data-umami-event='cta-view-my-work' class='py-2 px-4 truncate rounded text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend'>
@@ -149,8 +152,11 @@ const stack = [
           <div class='animated flex flex-wrap gap-4 justify-center mt-5'>
             {
               SOCIALS.map(item => (
-                <a href={item.HREF} data-umami-event={`social-${item.NAME.toLowerCase()}`} data-umami-event-placement='hero' class='py-2 px-4 truncate rounded text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend'>
-                  {item.TEXT} 
+                <a href={item.HREF} data-umami-event={`social-${item.NAME.toLowerCase()}`} data-umami-event-placement='hero' class='py-2 px-4 truncate rounded text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend flex items-center gap-2'>
+                  <svg class="size-4 fill-current shrink-0" aria-hidden="true">
+                    <use href={`/social.svg#${item.ICON}`} />
+                  </svg>
+                  {item.TEXT}
                 </a>
               ))
             }
@@ -227,7 +233,10 @@ const stack = [
           </p>
           <div class="grid grid-cols-4 gap-y-2 mt-4 auto-cols-min">
             {SOCIALS.map(social => (
-              <div class="col-span-1 flex items-center gap-1">
+              <div class="col-span-1 flex items-center gap-2">
+                <svg class="size-4 fill-current shrink-0" aria-hidden="true">
+                  <use href={`/social.svg#${social.ICON}`} />
+                </svg>
                 <span class="whitespace-nowrap truncate">
                   {social.NAME}
                 </span>
