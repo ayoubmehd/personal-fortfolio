@@ -34,6 +34,11 @@ mean either a blog or a project, since the shared layouts are written against
 `legal` are collections but not articles: work entries all render onto the single `/work` page.
 The article layouts (`ArticleTopLayout`, `ArticleBottomLayout`) are shared by both.
 
+**Work** — a place the author has been employed, and the collection of those places. Shown together
+on one page. _Avoid_: project, portfolio, "my work".
+
+**Project** — a portfolio piece with its own page. A **Project** is an **Article**. _Avoid_: work.
+
 **Slug** — an entry's URL segment, derived by Astro from the containing folder name
 (`src/content/blog/<slug>/index.md`). It is **not** prefixed with the collection name; a blog
 entry's slug is just `why-typescript-over-javascript-...`. Code that assumes otherwise is buggy —
@@ -43,13 +48,19 @@ see Known drift.
 excluded from listings, search, prev/next navigation, RSS, the sitemap, and is not built as a page
 at all. Draft files still live in the repo; they simply produce no output.
 
-**Placement** — where on a page a social link appears: `hero`, `contact`, or `footer`. All three
-render from the same `SOCIALS` array in `src/consts.ts`, so placement is what distinguishes them.
-Recorded as an analytics event property, not part of the event name.
+**Hero** — the full-viewport introduction on the home page: the claim, the name, the technologies
+shown, and the actions. The skills chart and the recent-projects list are not part of it.
+_Avoid_: header, banner, above the fold.
+
+**Placement** — where on a page a social link appears: `hero`, `contact`, or `footer`. The `hero`
+value means the link is rendered inside the **Hero**; it is not a name for the Hero itself. All
+three render from the same `SOCIALS` array in `src/consts.ts`, so placement is what distinguishes
+them. Recorded as an analytics event property, not part of the event name.
 
 **Event** — a Umami custom event fired by a `data-umami-event` attribute on a link. Named for the
 destination, never the page: `social-email`, `social-github`, `social-linkedin`, `project-demo`,
-`project-repo`, `cta-view-my-work`. The page is already recorded as `url_path` on every event, so
+`project-repo`, `cta-view-projects`. The primary Hero action goes to the projects page, so the
+event is named for that destination. The page is already recorded as `url_path` on every event, so
 event names must not encode it.
 
 **Pageview** — automatic per-page-load hit from the Umami tracker. Requires no wiring; covers every
@@ -91,7 +102,6 @@ Template leftovers and bugs, recorded so they aren't mistaken for intent:
   therefore 404s.
 - `/legal/privacy` and `/legal/terms` are lorem ipsum with `[Your Company Name]` placeholders. The
   footer links to them are commented out, so they are unreachable in the UI.
-- The tech stack cards on the home page all use `href="#"`.
 - `ViewTransitions` is imported but commented out in `BaseHead.astro`. Several components listen
   for `astro:after-swap` / `astro:before-swap`, so that code is currently dead. Enabling it would
   require re-checking pageview tracking, which currently relies on full page loads.
