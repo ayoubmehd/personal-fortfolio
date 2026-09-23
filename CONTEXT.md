@@ -18,6 +18,44 @@ The `Ow1.dev` name appears throughout the UI but the domain is **not registered*
 resolve. `site` in `astro.config.mjs` points at the Netlify URL and should be updated if the
 domain is ever purchased, along with `data-domains` on the analytics tracker.
 
+## Language
+
+**Name findability**:
+The search outcome this site is for: a person who looks up the author arrives here and recognizes the author. A search for the brand does not have to hit this site.
+_Avoid_: SEO, article ranking, service ranking, link previews, brand search
+
+**Canonical host**:
+The single hostname search engines should treat as this site. It is `n1-owl.netlify.app`.
+_Avoid_: Ow1.dev, domain, brand
+
+**Author**:
+Ayoub Elmahdaoui, the person this site is about.
+_Avoid_: user, owner
+
+**Brand**:
+Ow1.dev, the name the site shows on the page. It is not the canonical host, and it is not a search target.
+_Avoid_: domain, canonical host, leading name
+
+**Leading name**:
+The name a search result leads with. It is the author. The homepage title is the author alone. Every other public page's title is the page or article name, then the author. The brand is not in the title.
+_Avoid_: brand, page title "Home"
+
+**Claim**:
+What the author is, as one fixed sentence: "Full-stack developer with 3+ years of experience, based in Morocco." The homepage snippet says this. It matches the hero today and may drift if the hero changes.
+_Avoid_: description, bio
+
+**Public profile**:
+A page a stranger can open that corroborates the author. The profiles are GitHub, LinkedIn, and Upwork.
+_Avoid_: social, email
+
+**Person record**:
+A machine-readable statement that this site is the author, that the claim is his role, and that the public profiles are the same person.
+_Avoid_: schema, JSON-LD, structured data
+
+**Public page**:
+A page that is part of the author's public identity and should be findable: the homepage, the work page, the blog index, the projects index, and published articles.
+_Avoid_: search, legal
+
 ## Glossary
 
 Use these terms in commit messages, issues, and code. They match what the code already calls things.
@@ -48,7 +86,7 @@ see Known drift.
 excluded from listings, search, prev/next navigation, RSS, the sitemap, and is not built as a page
 at all. Draft files still live in the repo; they simply produce no output.
 
-**Hero** — the full-viewport introduction on the home page: the claim, the name, the technologies
+**Hero** — the full-viewport introduction on the home page: the **Claim**, the name, the technologies
 shown, and the actions. The skills chart and the recent-projects list are not part of it.
 _Avoid_: header, banner, above the fold.
 
